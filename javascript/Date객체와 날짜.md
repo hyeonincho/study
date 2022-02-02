@@ -1,0 +1,18 @@
+## Date 객체와 날짜
+- 정수로 초기화시 `UTC+0 1970.01.01 00:00:00`에서 몇ms 지났는지. -> timestamp
+- 문자로 초기화시 코드 실행되는 timezone에 따라 출력 문자열이 바뀜
+- `new Date(year, month, date = 1, hours = 0, minutes = 0, seconds = 0, ms = 0)`
+    - year는 4글자
+    - month는 0 ~ 11
+    - 인자가 범위를 넘어가면 상위 인자에 구성요소 배분
+        - ex) minute에 61을 넘기면 hours + 1
+        - `setXXX`도 마찬가지로 작동함
+- `set/getXXX`메소드로 여러 기능 시간정보 반환(현지 시간 기준으로)
+    - 단, 비표준 `getYear`대신 `getFullYear`을 써라
+    - UTC기준으로 하고 싶으면 `getUTCXXX`하던가
+- Date객체끼리 빼기연산 => 밀리초 시간차
+    - new 없이 `Date.now()`만 써도 현 시간 구해짐.
+- `Date.parse(str)`로 문자열에서 timestamp 반환
+    - 형식 `YYYY-MM-DDTHH:mm:ss.sssZ`
+    - `T`는 구분기호
+    - `Z`(옵션) `+-hh:mm`형식의 시간대를 나타냄. `Z` 한글자면 UTC+0
